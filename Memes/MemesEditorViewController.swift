@@ -38,11 +38,11 @@ class MemesEditorViewController: UIViewController, UIImagePickerControllerDelega
         self.view.addSubview(bar)
         return bar
     }()
-    lazy var navBar: UINavigationBar = {
-        let bar = UINavigationBar()
-        self.view.addSubview(bar)
-        return bar
-    }()
+//    lazy var navBar: UINavigationBar = {
+//        let bar = UINavigationBar()
+//        self.view.addSubview(bar)
+//        return bar
+//    }()
     
     let memeTextAttributes  = [NSStrokeColorAttributeName: UIColor.black,
                                NSForegroundColorAttributeName: UIColor.white,
@@ -59,19 +59,31 @@ class MemesEditorViewController: UIViewController, UIImagePickerControllerDelega
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem.
+        let backItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+        let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
         
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        navBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        navBar.bottomAnchor.constraint(equalTo: imagePickerView.topAnchor).isActive = true
-        navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+        navigationItem.leftBarButtonItem = shareItem
+        navigationItem.rightBarButtonItem = backItem
         
-        navBar.backgroundColor = UIColor.purple
         
+        
+        let cameraItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
+        let albumItem = UIBarButtonItem(title: "Album", style: .done, target: nil, action: nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 100
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+            takePhoto.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+        
+        
+        
+//
+        toolBar.items = [fixedSpace, cameraItem, spaceItem, albumItem, fixedSpace]
+
         
         imagePickerView.translatesAutoresizingMaskIntoConstraints  = false
-        imagePickerView.topAnchor.constraint(equalTo: navBar.bottomAnchor).isActive = true
+        imagePickerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         imagePickerView.bottomAnchor.constraint(equalTo: toolBar.topAnchor).isActive = true
         imagePickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         imagePickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
