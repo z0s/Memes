@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="MemeEntity" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16B2338c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Meme" syncable="YES">
         <attribute name="bottomText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memedImage" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="topText" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MemeEntity" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Meme" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

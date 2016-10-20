@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var meme = [Meme]()
+    var memes = [Meme]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -21,11 +21,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         
-        let vc = MemesEditorViewController()
-        let navCon = UINavigationController(rootViewController: vc)
-        window?.rootViewController = navCon
+        let vc = MemesCollectionViewController()
+         
+        let tabBar = UITabBarController()
+        
+        let rootVC = MemesTableViewController()
+        let nav1 = UINavigationController(rootViewController: rootVC)
+        let nav2 = UINavigationController(rootViewController: vc)
+        
+        tabBar.setViewControllers([nav1, nav2], animated: true)
+        
+        
+//        window?.rootViewController = nav1
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
         
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docsDirectory = paths[0]
+        let fileName = docsDirectory.appendingPathComponent("test.png")
+        
+        for _ in 0..<5 {
+            if let memedImage = UIImage(contentsOfFile: fileName.path) {
+                let meme = Meme(topText: "Test Top", bottomText: "Test Bot", image: memedImage, memedImage: memedImage)
+                memes.append(meme)
+            }
+        }
+    
         return true
     }
 
